@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="kd-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA" />
+      <stop offset="100%" stop-color="#45C4B0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Background with rounded corners -->
+  <rect width="32" height="32" rx="8" fill="#15171C" />
+  
+  <!-- Subtle gradient border -->
+  <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" stroke="url(#kd-grad)" stroke-width="1.2" opacity="0.6" />
+
+  <!-- Message Bubble Silhouette -->
+  <path 
+    d="M7 11.5C7 9.01472 9.01472 7 11.5 7H20.5C22.9853 7 25 9.01472 25 11.5V17.5C25 19.9853 22.9853 22 20.5 22H14.5L9.5 25.5V22H11.5C9.01472 22 7 19.9853 7 17.5V11.5Z" 
+    fill="url(#kd-grad)" 
+  />
+
+  <!-- Inner Key / Keyhole Cutout / Drop Detail -->
+  <circle cx="16" cy="13.5" r="2.2" fill="#15171C" />
+  <path d="M15.2 14.5H16.8L17.2 18H14.8L15.2 14.5Z" fill="#15171C" />
+  <circle cx="16" cy="16.5" r="0.8" fill="#45C4B0" />
+</svg>
