@@ -156,7 +156,7 @@ export function MessageFeed({
         ) : isLoading ? (
           <div className="flex flex-col items-center justify-center py-16 text-mutedText space-y-3">
             <Loader2 className="w-6 h-6 animate-spin text-primary" />
-            <p className="text-xs">Reading messages from Botchain Testnet...</p>
+            <p className="text-xs">Reading messages from BOT Chain...</p>
           </div>
         ) : currentList.length === 0 ? (
           <div className="text-center py-14 px-4">
@@ -173,7 +173,7 @@ export function MessageFeed({
                 : "You haven't sent any messages yet."}
             </p>
             <p className="text-xs text-mutedText mt-1">
-              All messages are recorded directly on Botchain Testnet.
+              All messages are recorded directly on BOT Chain.
             </p>
           </div>
         ) : (

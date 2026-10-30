@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useAccount, useConnect, useDisconnect, useSwitchChain } from "wagmi";
-import { botchainTestnet } from "@/lib/chains";
+import { botchain } from "@/lib/chains";
 import {
   MessageSquare,
   Wallet,
@@ -11,6 +11,8 @@ import {
   Check,
   AlertTriangle,
   ChevronDown,
+  ExternalLink,
+  Globe,
 } from "lucide-react";
 
 export function Header() {
@@ -27,7 +29,7 @@ export function Header() {
     setMounted(true);
   }, []);
 
-  const isWrongNetwork = mounted && isConnected && chain?.id !== botchainTestnet.id;
+  const isWrongNetwork = mounted && isConnected && chain?.id !== botchain.id;
 
   const handleCopy = () => {
     if (!address) return;
@@ -62,8 +64,8 @@ export function Header() {
               <span className="text-xl font-bold tracking-tight text-mainText">
                 KeyDrop
               </span>
-              <span className="px-2 py-0.5 text-[10px] font-semibold bg-primary/10 text-primary border border-primary/20 rounded-full">
-                Testnet
+              <span className="px-2 py-0.5 text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full">
+                Mainnet
               </span>
             </div>
             <p className="text-xs text-mutedText hidden sm:block">
@@ -71,6 +73,38 @@ export function Header() {
             </p>
           </div>
         </div>
+
+        {/* Center / Navigation Links */}
+        <nav className="hidden sm:flex items-center space-x-4 text-xs font-medium text-mutedText">
+          <a
+            href="https://scan.botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center space-x-2 hover:text-primary transition-colors py-1.5 px-3 rounded-lg hover:bg-card border border-transparent hover:border-border"
+          >
+            <img
+              src="/botchain-logo.png"
+              alt="BOT Chain"
+              className="w-4 h-4 object-contain rounded shrink-0"
+            />
+            <span>BOT Chain Explorer</span>
+            <ExternalLink className="w-3 h-3 opacity-60" />
+          </a>
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center space-x-2 hover:text-primary transition-colors py-1.5 px-3 rounded-lg hover:bg-card border border-transparent hover:border-border"
+          >
+            <img
+              src="/botchain-logo.png"
+              alt="BOT Chain"
+              className="w-4 h-4 object-contain rounded shrink-0"
+            />
+            <span>BOT Chain Website</span>
+            <ExternalLink className="w-3 h-3 opacity-60" />
+          </a>
+        </nav>
 
         {/* Right Action / Wallet Button */}
         <div className="flex items-center space-x-3">
@@ -84,18 +118,23 @@ export function Header() {
             </button>
           ) : isConnected && isWrongNetwork ? (
             <button
-              onClick={() => switchChain({ chainId: botchainTestnet.id })}
+              onClick={() => switchChain({ chainId: botchain.id })}
               disabled={isSwitching}
               className="flex items-center space-x-2 px-3.5 py-2 text-xs font-medium text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-xl hover:bg-amber-500/20 transition-all duration-200"
             >
               <AlertTriangle className="w-4 h-4" />
-              <span>{isSwitching ? "Switching..." : "Switch to Botchain"}</span>
+              <span>{isSwitching ? "Switching..." : "Switch to BOT Chain Mainnet"}</span>
             </button>
           ) : isConnected ? (
             <>
               <div className="hidden md:flex items-center space-x-2 px-3 py-1.5 bg-card border border-border rounded-xl text-xs text-mutedText">
+                <img
+                  src="/botchain-logo.png"
+                  alt="BOT Chain"
+                  className="w-3.5 h-3.5 object-contain rounded shrink-0"
+                />
                 <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
-                <span>Botchain Testnet (968)</span>
+                <span>BOT Chain Mainnet (677)</span>
               </div>
               <div className="relative">
                 <button
@@ -137,6 +176,16 @@ export function Header() {
                           </>
                         )}
                       </button>
+
+                      <a
+                        href={`https://scan.botchain.ai/address/${address}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full flex items-center space-x-2.5 px-3 py-2 text-xs font-medium text-mainText hover:bg-background rounded-lg transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4 text-primary" />
+                        <span>View on BOT Explorer</span>
+                      </a>
 
                       <button
                         onClick={() => {

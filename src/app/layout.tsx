@@ -5,9 +5,9 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "KeyDrop — Public Web3 Messaging on Botchain Testnet",
+  title: "KeyDrop — Public Web3 Messaging on BOT Chain",
   description:
-    "Send public on-chain messages to any wallet address on Botchain Testnet. Drop a message. Send it on-chain.",
+    "Send public on-chain messages to any wallet address on BOT Chain. Drop a message. Send it on-chain.",
 };
 
 export default function RootLayout({

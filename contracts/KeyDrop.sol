@@ -3,7 +3,7 @@ pragma solidity ^0.8.20;
 
 /**
  * @title KeyDrop
- * @notice A decentralized, public messaging smart contract deployed on Botchain Testnet.
+ * @notice A decentralized, public messaging smart contract deployed on BOT Chain.
  * @dev All messages are stored permanently on-chain in plaintext. Messages are public blockchain data.
  */
 contract KeyDrop {

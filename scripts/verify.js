@@ -1,10 +1,12 @@
 const fs = require("fs");
 const path = require("path");
+require("dotenv").config({ path: ".env.local" });
+require("dotenv").config();
 
 async function main() {
   const contractAddress =
     process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ||
-    "0x23604e48feCEdb8D652E731203BB41d40266Ccd6";
+    "0x5BE39A6ba579a7aDc8269B8169Af10a557b5bCD2";
 
   const sourceCode = fs.readFileSync(
     path.join(__dirname, "../contracts/KeyDrop.sol"),
@@ -30,7 +32,7 @@ async function main() {
     };
 
     const resV2 = await fetch(
-      `https://scan.bohr.life/api/v2/smart-contracts/${contractAddress}/verification/via/flattened-code`,
+      `https://scan.botchain.ai/api/v2/smart-contracts/${contractAddress}/verification/via/flattened-code`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -45,7 +47,7 @@ async function main() {
     console.log("Method 1 Error:", err.message);
   }
 
-  // 2. Try Standard Etherscan-compatible Bohr API
+  // 2. Try Standard Etherscan-compatible BOT Chain API
   console.log("\n[Method 2] Submitting via standard Explorer API...");
   try {
     const params = new URLSearchParams({
@@ -63,7 +65,7 @@ async function main() {
       licenseType: "3", // MIT
     });
 
-    const resApi = await fetch("https://scan.bohr.life/api", {
+    const resApi = await fetch("https://scan.botchain.ai/api", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: params.toString(),
@@ -76,7 +78,7 @@ async function main() {
       console.log("Checking verification status in 5s...");
       await new Promise((r) => setTimeout(r, 5000));
       const statusRes = await fetch(
-        `https://scan.bohr.life/api?module=contract&action=checkverifystatus&guid=${dataApi.result}`
+        `https://scan.botchain.ai/api?module=contract&action=checkverifystatus&guid=${dataApi.result}`
       );
       const statusData = await statusRes.json();
       console.log("Verification status result:", statusData);
@@ -85,11 +87,11 @@ async function main() {
     console.log("Method 2 Error:", err.message);
   }
 
-  // 3. Check contract verification status on Bohr Explorer
+  // 3. Check contract verification status on Explorer
   console.log("\nChecking contract details on explorer...");
   try {
     const checkRes = await fetch(
-      `https://scan.bohr.life/api/v2/smart-contracts/${contractAddress}`
+      `https://scan.botchain.ai/api/v2/smart-contracts/${contractAddress}`
     );
     if (checkRes.ok) {
       const contractData = await checkRes.json();

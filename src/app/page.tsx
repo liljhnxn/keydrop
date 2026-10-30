@@ -98,9 +98,9 @@ export default function Home() {
               Contract Address Not Configured
             </p>
             <p className="text-amber-200/90 leading-relaxed">
-              Deploy the contract to Botchain Testnet using{" "}
+              Deploy the contract to BOT Chain Mainnet using{" "}
               <code className="bg-black/30 px-1.5 py-0.5 rounded font-mono text-amber-300">
-                npm run deploy:botchain
+                npm run deploy:mainnet
               </code>{" "}
               and set{" "}
               <code className="bg-black/30 px-1.5 py-0.5 rounded font-mono text-amber-300">

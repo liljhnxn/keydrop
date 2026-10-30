@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from "react";
 import { isAddress } from "viem";
 import { useAccount, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { KEYDROP_ADDRESS, KEYDROP_ABI } from "@/lib/contracts";
-import { botchainTestnet } from "@/lib/chains";
+import { botchain } from "@/lib/chains";
 import {
   Send,
   AlertTriangle,
@@ -54,7 +54,7 @@ export function SendMessageCard({ onMessageSent }: SendMessageCardProps) {
   }, [content]);
 
   const isOverByteLimit = byteLength > 280;
-  const isCorrectNetwork = isConnected && chain?.id === botchainTestnet.id;
+  const isCorrectNetwork = isConnected && chain?.id === botchain.id;
   const isPending = isWritePending || isConfirming;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -67,7 +67,7 @@ export function SendMessageCard({ onMessageSent }: SendMessageCardProps) {
     }
 
     if (!isCorrectNetwork) {
-      setValidationError("Please switch to Botchain Testnet.");
+      setValidationError("Please switch to Botchain Mainnet.");
       return;
     }
 
@@ -245,12 +245,17 @@ export function SendMessageCard({ onMessageSent }: SendMessageCardProps) {
                 Hash: {txHash.slice(0, 10)}...{txHash.slice(-8)}
               </span>
               <a
-                href={`https://scan.bohr.life/tx/${txHash}`}
+                href={`${botchain.blockExplorers.default.url}/tx/${txHash}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center space-x-1 text-primary hover:underline shrink-0"
+                className="flex items-center space-x-1.5 text-primary hover:underline shrink-0"
               >
-                <span>View Explorer</span>
+                <img
+                  src="/botchain-logo.png"
+                  alt="BOT Chain"
+                  className="w-3.5 h-3.5 object-contain rounded shrink-0"
+                />
+                <span>View on Explorer</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>

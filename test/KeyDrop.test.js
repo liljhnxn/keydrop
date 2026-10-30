@@ -55,7 +55,7 @@ describe("KeyDrop Contract Tests", function () {
 
   // 6. The message content is stored correctly.
   it("6. The message content is stored correctly", async function () {
-    const text = "Public on-chain message on Botchain Testnet!";
+    const text = "Public on-chain message on BOT Chain!";
     await keyDrop.connect(alice).sendMessage(bob.address, text);
     const msg = await keyDrop.getMessage(1);
     expect(msg.content).to.equal(text);

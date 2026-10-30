@@ -1,5 +1,5 @@
 export const KEYDROP_ADDRESS = (process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ||
-  "") as `0x${string}`;
+  "0x5BE39A6ba579a7aDc8269B8169Af10a557b5bCD2") as `0x${string}`;
 
 export const KEYDROP_ABI = [
   {
